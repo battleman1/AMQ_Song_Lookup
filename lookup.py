@@ -22,8 +22,8 @@ def search_animes(data, input_value, song_type_filter=None, type_number_filter=N
     for anime in data:
         for field in fields_to_search:
             anime_field = anime.get(field, "")
-            anime_field_clean = re.sub('[^a-zA-Z\d\s]+', ' ', anime_field)
-            if input_value.lower() in anime_field_clean.lower() or input_value.lower() in anime_field.lower():
+            anime_field_clean = re.sub('[^a-zA-Z\d\s]+', ' ', str(anime_field))  # Ensure it's a string
+            if input_value.lower() in anime_field_clean.lower() or input_value.lower() in str(anime_field).lower():
                 # Apply additional filters if specified
                 if song_type_filter is not None and anime['songType'] != song_type_filter:
                     continue
@@ -32,8 +32,19 @@ def search_animes(data, input_value, song_type_filter=None, type_number_filter=N
                 results.append((anime, field))
                 break  # Stop checking other fields once a match is found for this anime
 
-    return results
+        # Special handling for altAnimeNames (list)
+        if "altAnimeNames" in anime:
+            for alt_name in anime["altAnimeNames"]:
+                alt_name_clean = re.sub('[^a-zA-Z\d\s]+', ' ', alt_name)
+                if input_value.lower() in alt_name_clean.lower():
+                    if song_type_filter is not None and anime['songType'] != song_type_filter:
+                        continue
+                    if type_number_filter is not None and anime['typeNumber'] != type_number_filter:
+                        continue
+                    results.append((anime, "altAnimeNames"))
+                    break  # Stop checking other alt names once a match is found
 
+    return results
 
 
 def parse_input(search_input):
@@ -83,7 +94,7 @@ def main():
         for i, (anime, matched_field) in enumerate(results, start=1):
             print(
                 f"{i}. {anime[matched_field]} ({anime['songName']}) - "
-                f"{song_typer[anime['songType']]} {anime['typeNumber']}"
+                f"{song_typer[anime['songType']]} {'' if anime['typeNumber'] == None else anime['typeNumber']}"
             )
         
         # Allow the user to select a result to view its video720
@@ -91,8 +102,13 @@ def main():
             selection = int(input("\nSelect a number to view its video: "))
             if 1 <= selection <= len(results):
                 selected_anime = results[selection - 1][0]
-                print(f"https://naedist.animemusicquiz.com/{selected_anime['video720']}")
-                webbrowser.open(f"https://naedist.animemusicquiz.com/{selected_anime['video720']}")
+                video_url = (
+                    f"https://naedist.animemusicquiz.com/{selected_anime['video720']}"
+                    if selected_anime.get('video720')
+                    else f"https://naedist.animemusicquiz.com/{selected_anime['video480']}"
+                )
+                print(video_url)
+                webbrowser.open(video_url)
             else:
                 print("Invalid selection.")
         except ValueError:
