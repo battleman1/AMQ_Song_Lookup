@@ -1,2 +1,2 @@
 @echo off
-python "C:\path\to\lookup.py" %*
+python "C:\add_your_correct_path_here\lookup.py" %*
