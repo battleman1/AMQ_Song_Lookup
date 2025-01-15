@@ -36,7 +36,7 @@ def song_typer(songtype):
 
 def main():
     # Load the JSON file
-    with open("all_songs.json", "r", encoding="utf-8") as file:             ### edit this line to insert custom name!
+    with open("songs.json", "r", encoding="utf-8") as file:             ### edit this line to insert custom name!
         data = json.load(file)
 
     # Get search input from the user
