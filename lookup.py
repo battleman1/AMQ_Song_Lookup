@@ -1,6 +1,7 @@
 import json
 import webbrowser
 import re
+import os
 
 def search_animes(data, input_value, song_type_filter=None, type_number_filter=None):
     """
@@ -59,8 +60,12 @@ def parse_input(search_input):
     
 def main():
     song_typer = {1:'OP', 2:'ED', 3:'IN'}
+    # Get the directory of the current script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    json_path = os.path.join(script_dir, "songs.json")
+
     # Load the JSON file
-    with open("songs.json", "r", encoding="utf-8") as file:
+    with open(json_path, "r", encoding="utf-8") as file:
         data = json.load(file)
 
     # Get search input from the user
