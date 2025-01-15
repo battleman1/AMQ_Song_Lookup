@@ -6,3 +6,8 @@ you can run the python file directly, but to make it easier on people i have inc
 this is a relatively small project so list of availabe songs is not universal. instead get a json of the songs that you want (can be found through anisongdb or the custom song list (CSL) userscript https://github.com/kempanator/amq-scripts) and name it songs.json or whatever else you want to call it, though you will have to change line 39 in lookup.py to what you want it to be. Can add functionality such as joining all available jsons within a folder or smth if people want it or smth but idk. 
 
 if anyone knows how to always have the up to date version of the json do let me know so that i can implement it.
+
+## user manual
+basically type in name of anime/artist/song and it will find all matches. search enging works similar to that of amq in which spaces do funny stuff. 
+add a ' ' directly after search in order to further search for op/ed/ins and their respective number (ex: gintama ins3)
+afterwards, input the number in front of the song you want. it will automatically pop up in your browser!
