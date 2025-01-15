@@ -17,5 +17,5 @@ if anyone knows how to always have the up to date version of the json do let me 
 Basically type in name of anime/artist/song and it will find all matches. search enging works similar to that of amq in which spaces do funny stuff.
 
 notes:
-- add a ' ' directly after search in order to further search for op/ed/ins and their respective number (ex: gintama ins3)
+- add a ' ' directly after search in order to further search for op/ed/ins and their respective number (ex: "gintama ins", "higu op1")
 - afterwards, input the number in front of the song you want. it will automatically pop up in your browser!
