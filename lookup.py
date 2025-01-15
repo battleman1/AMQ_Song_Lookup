@@ -2,6 +2,7 @@ import json
 import webbrowser
 import re
 import os
+from sys import argv
 
 def search_animes(data, input_value, song_type_filter=None, type_number_filter=None):
     """
@@ -69,8 +70,11 @@ def main():
         data = json.load(file)
 
     # Get search input from the user
-    search_input = input("Enter search term: ")
-
+    if len(argv) < 2:
+        search_input = input("Enter search term: ")
+    else:
+        search_input = " ".join(argv[1:])
+    
     # Parse the input to extract filters
     search_term, song_type_filter, type_number_filter = parse_input(search_input)
 
