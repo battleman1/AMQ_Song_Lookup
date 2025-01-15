@@ -7,6 +7,12 @@ this is a relatively small project so list of availabe songs is not universal. i
 
 if anyone knows how to always have the up to date version of the json do let me know so that i can implement it.
 
+## getting started
+1. download amq_lookup.zip
+2. move it to desired location and then add amq_lookup to PATH
+3. open command line and type 'amq'
+4. Yuri!!!!
+
 ## user manual
 Basically type in name of anime/artist/song and it will find all matches. search enging works similar to that of amq in which spaces do funny stuff.
 
