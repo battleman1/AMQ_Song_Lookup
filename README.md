@@ -8,6 +8,8 @@ this is a relatively small project so list of availabe songs is not universal. i
 if anyone knows how to always have the up to date version of the json do let me know so that i can implement it.
 
 ## user manual
-basically type in name of anime/artist/song and it will find all matches. search enging works similar to that of amq in which spaces do funny stuff. 
-add a ' ' directly after search in order to further search for op/ed/ins and their respective number (ex: gintama ins3)
-afterwards, input the number in front of the song you want. it will automatically pop up in your browser!
+Basically type in name of anime/artist/song and it will find all matches. search enging works similar to that of amq in which spaces do funny stuff.
+
+notes:
+- add a ' ' directly after search in order to further search for op/ed/ins and their respective number (ex: gintama ins3)
+- afterwards, input the number in front of the song you want. it will automatically pop up in your browser!
